@@ -1,0 +1,14 @@
+FROM louislam/uptime-kuma:1
+
+# Crear y configurar el directorio de datos
+RUN mkdir -p /app/data && \
+    chown -R 1000:1000 /app/data
+
+# Exponer el puerto
+EXPOSE 3001
+
+# Configurar el volumen
+VOLUME ["/app/data"]
+
+# Comando para iniciar la aplicación
+CMD ["node", "server/server.js"]
